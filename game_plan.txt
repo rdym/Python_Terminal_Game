@@ -1,0 +1,7 @@
+Text Adventure Game Plan:
+- The player will be stuck in a cave upon game launch and it will be their job to navigate the cave to escape...or die. 
+- They will have a set amount of time in which to escape that can be extended or reduced based on their interactions with the things inside the cave
+    - e.g. If they find food then it will extend how long they have, but being attacked will reduce the amount of time.
+- There will be different items that they are going to need to collect to be able to escape the cave
+    - Need to assess whether it would be possible for them to have different ways to get out of the cave based on the items they pick up.
+    - Could they use items in their inventory based on what is in front of them?
