@@ -1,7 +1,36 @@
 Text Adventure Game Plan:
-- The player will be stuck in a cave upon game launch and it will be their job to navigate the cave to escape...or die. 
+- The player will have been left in a cave upon game launch and it will be their job to navigate the cave to escape...or die. 
+- In the initial area they will have radio connection to their friend who can help give them advice:
+    - Provide a help command which will bring up the commands that they can call
+    - Only provide the help command in the first few areas, as they venture further into the cave the commads will start to be cut off, then cut off completely.
+        - Could be implemented by calling a rantint command that replaces certain letters in a string with static.
 - They will have a set amount of time in which to escape that can be extended or reduced based on their interactions with the things inside the cave
     - e.g. If they find food then it will extend how long they have, but being attacked will reduce the amount of time.
 - There will be different items that they are going to need to collect to be able to escape the cave
     - Need to assess whether it would be possible for them to have different ways to get out of the cave based on the items they pick up.
     - Could they use items in their inventory based on what is in front of them?
+- There will be a large central area that they will need to escape from, but they will need to venture further in before getting everything they need to escape.
+
+
+Areas in Game:
+- Main central area - perfect radio signal
+- 
+
+
+Items:
+- Rope
+- Radio
+- Wire
+- Goggles
+- Torch
+- Water
+    - Have safe and unsafe Water
+    - Unsafe water will hurt the users health
+- Food
+- Batteries
+
+
+Player Attributs:
+- Health 
+- Inventory
+- 
