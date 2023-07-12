@@ -206,8 +206,6 @@ print_line("'What's your name?'\n")
 player.name = input("Please enter your name: ")
 print_line_input("'Wow I can't believe I found you {name}! I'm so glad you're okay! I think I can see you moving below'. You see a figure waving at you far above.".format(name = player.name))
 print_line_input("'I'm going to try and find a way to get you out of there. I'll be back soon!'")
-print("111111111122222222223333333333444444444455555555556666666666777777777788888888889999999999")
-input()
 
 while player.is_alive == True:
     print_line("What do you want to do?\n")
