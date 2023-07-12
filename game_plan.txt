@@ -31,6 +31,20 @@ Items:
 
 
 Player Attributs:
-- Health 
-- Inventory
+- health 
+- inventory
 - 
+
+Player Actions:
+- go
+    - north
+    - south
+    - east
+    - west
+- look - look around at surroundings and give a description of the location
+- inventory
+- take
+- drop
+- use
+- help
+
