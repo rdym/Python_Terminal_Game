@@ -48,3 +48,7 @@ Player Actions:
 - use
 - help
 
+Map:
+- Want to be able to call map and for the player to see where they are currently, as well as where they have been before. If they have not been there then it should not be visible. The graphic should also show the user where they are currently.
+
+
