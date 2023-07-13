@@ -23,64 +23,94 @@ class Map():
                     ['C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
                     ['C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
                     ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']]
-        self.blank_map = [['?'] * 20] * 20
         self.height = len(self.map)
         self.width = len(self.map[0])
+        self.blank_map = [['?'] * self.width for _ in range(self.height)]
+        
 
     def __repr__(self):
         return "Map(height = {height}, width = {width}, player_x = {player_x}, player_y = {player_y})".format(height = self.height, width = self.width, player_x = self.player_x, player_y = self.player_y)
     
-    # def move(self, direction):
-    #     if direction == 'north':
-    #         new_cell = self.map[self.player_y - 1][self.player_x]
-    #         if new_cell == ' ':
-    #             self.player_y -= 1
-    #         elif new_cell == 'R':
-    #             print("You found a rope!")
-    #             self.player_y -= 1
-    #         else:
-    #             print("You can't go that way")
+    def reveal_map(self, x, y):
+        for i, row in enumerate(self.blank_map):
 
-    def north(self):
-        new_cell = self.map[self.player_y - 1][self.player_x]
-        if new_cell == ' ':
-            self.player_y -= 1
-        elif new_cell == 'R':
-            print("You found a rope!")
-            self.player_y -= 1
-        else:
-            print("You can't go that way")
+            y_above = i - 1
+            if y_above < 0:
+                        y_above = 0
 
-    def south(self):
-        new_cell = self.map[self.player_y + 1][self.player_x]
-        if new_cell == ' ':
-            self.player_y += 1
-        elif new_cell == 'R':
-            print("You found a rope!")
-            self.player_y += 1
-        else:
-            print("You can't go that way")
+            y_below = i + 1
+            if y_below > self.height - 1:
+                y_below = self.height - 1
 
-    def east(self):
-        new_cell = self.map[self.player_y][self.player_x + 1]
-        if new_cell == ' ':
-            self.player_x += 1
-        elif new_cell == 'R':
-            print("You found a rope!")
-            self.player_x += 1
-        else:
-            print("You can't go that way")
+            for j, char in enumerate(row):
+
+                x_left = j - 1
+                if x_left < 0:
+                    x_left = 0
+
+                x_right = j + 1
+                if x_right > self.width - 1:
+                    x_right = self.width - 1
+
+                if i == y and j == x:
+                    
+                    self.blank_map[i][j] = self.map[i][j]
+                    self.blank_map[y_above][j] = self.map[y_above][j]
+                    self.blank_map[y_below][j] = self.map[y_below][j]
+                    self.blank_map[i][x_left] = self.map[i][x_left]
+                    self.blank_map[i][x_right] = self.map[i][x_right]
+                    self.blank_map[y_above][x_left] = self.map[y_above][x_left]
+                    self.blank_map[y_above][x_right] = self.map[y_above][x_right]
+                    self.blank_map[y_below][x_left] = self.map[y_below][x_left]
+                    self.blank_map[y_below][x_right] = self.map[y_below][x_right]
+        return self.blank_map
     
-    def west(self):
-        new_cell = self.map[self.player_y][self.player_x - 1]
-        if new_cell == ' ':
-            self.player_x -= 1
-        elif new_cell == 'R':
-            print("You found a rope!")
-            self.player_x -= 1
-        else:
-            print("You can't go that way")
-        
+    def move(self, direction):
+        if direction == 'north':
+            new_cell = self.map[self.player_y - 1][self.player_x]
+            if new_cell == ' ':
+                self.player_y -= 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_y -= 1
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                print("You can't go that way")
+        elif direction == 'south':
+            new_cell = self.map[self.player_y + 1][self.player_x]
+            if new_cell == ' ':
+                self.player_y += 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_y += 1
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                print("You can't go that way")
+        elif direction == 'east':
+            new_cell = self.map[self.player_y][self.player_x + 1]
+            if new_cell == ' ':
+                self.player_x += 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_x += 1
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                print("You can't go that way")
+        elif direction == 'west':
+            new_cell = self.map[self.player_y][self.player_x - 1]
+            if new_cell == ' ':
+                self.player_x -= 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_x -= 1
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                print("You can't go that way")
+
     def print_map(self):
         map_string = ""
         for row in self.map:
@@ -91,7 +121,7 @@ class Map():
 
     def print_map_with_player(self):
         map_string = ""
-        for i, row in enumerate(self.map):
+        for i, row in enumerate(self.blank_map):
             for j, char in enumerate(row):
                 if i == self.player_y and char == ' ' and j == self.player_x:
                     map_string += 'P'
