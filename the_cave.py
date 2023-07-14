@@ -14,9 +14,200 @@ def print_line(line):
         print(char, end='', flush=True)
         sleep(0.02)
 
-class Player:
+class Map():
+    def __init__(self, player_x = 9, player_y = 10):
+        self.player_x = player_x
+        self.player_y = player_y
+        self.map = [['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'R', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'M', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', 'C']]
+        self.height = len(self.map)
+        self.width = len(self.map[0])
+        self.blank_map = [['?'] * self.width for _ in range(self.height)]
+        self.have_map = True
+        self.can_move_north = False
+        self.can_move_south = False
+        self.can_move_east = False
+        self.can_move_west = False
+        
 
-    def __init__(self, name = "nameless player"):
+    def __repr__(self):
+        return "Map(height = {height}, width = {width}, player_x = {player_x}, player_y = {player_y})".format(height = self.height, width = self.width, player_x = self.player_x, player_y = self.player_y)
+    
+    def reveal_map(self, x, y):
+        for i, row in enumerate(self.blank_map):
+
+            y_above = i - 1
+            if y_above < 0:
+                        y_above = 0
+
+            y_below = i + 1
+            if y_below > self.height - 1:
+                y_below = self.height - 1
+
+            for j, char in enumerate(row):
+
+                x_left = j - 1
+                if x_left < 0:
+                    x_left = 0
+
+                x_right = j + 1
+                if x_right > self.width - 1:
+                    x_right = self.width - 1
+
+                if i == y and j == x:
+                    
+                    self.blank_map[i][j] = self.map[i][j]
+                    self.blank_map[y_above][j] = self.map[y_above][j]
+                    self.blank_map[y_below][j] = self.map[y_below][j]
+                    self.blank_map[i][x_left] = self.map[i][x_left]
+                    self.blank_map[i][x_right] = self.map[i][x_right]
+                    self.blank_map[y_above][x_left] = self.map[y_above][x_left]
+                    self.blank_map[y_above][x_right] = self.map[y_above][x_right]
+                    self.blank_map[y_below][x_left] = self.map[y_below][x_left]
+                    self.blank_map[y_below][x_right] = self.map[y_below][x_right]
+        return self.blank_map
+    
+    def can_move(self, x, y):
+        can_move_directions = []
+        if self.map[y-1][x] == ' ':
+            self.can_move_north = True
+            can_move_directions.append('north')
+        if self.map[y + 1][x] == ' ':
+            self.can_move_south = True
+            can_move_directions.append('south')
+        if self.map[y][x + 1] == ' ':
+            self.can_move_east = True
+            can_move_directions.append('east')
+        if self.map[y][x - 1] == ' ':
+            self.can_move_west = True
+            can_move_directions.append('west')
+        new_can_move = can_move_directions[0]
+        if len(can_move_directions) > 1:
+            if len(can_move_directions) == 2:
+                new_can_move += ' or ' + can_move_directions[1]
+            elif len(can_move_directions) == 3:
+                new_can_move += ', ' + can_move_directions[1] + ' or ' + can_move_directions[2]
+            else:
+                print("Something went wrong")
+        print("You can't go that way! It looks like you can go " + new_can_move + " though!")
+
+    
+    def move(self, direction):
+        if direction.lower() == 'north':
+            new_cell = self.map[self.player_y - 1][self.player_x]
+            if new_cell == ' ':
+                self.player_y -= 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_y -= 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'M':
+                print("You found a map!")
+                self.have_map = True
+                self.player_y -= 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                self.can_move(self.player_x, self.player_y)
+        elif direction.lower() == 'south':
+            new_cell = self.map[self.player_y + 1][self.player_x]
+            if new_cell == ' ':
+                self.player_y += 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_y += 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'M':
+                print("You found a map!")
+                self.have_map = True
+                self.player_y += 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                self.can_move(self.player_x, self.player_y)
+        elif direction.lower() == 'east':
+            new_cell = self.map[self.player_y][self.player_x + 1]
+            if new_cell == ' ':
+                self.player_x += 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_x += 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'M':
+                print("You found a map!")
+                self.have_map = True
+                self.player_x += 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                self.can_move(self.player_x, self.player_y)
+        elif direction.lower() == 'west':
+            new_cell = self.map[self.player_y][self.player_x - 1]
+            if new_cell == ' ':
+                self.player_x -= 1
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'R':
+                print("You found a rope!")
+                self.player_x -= 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'M':
+                print("You found a map!")
+                self.have_map = True
+                self.player_x -= 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+            else:
+                self.can_move(self.player_x, self.player_y)
+
+    def print_map(self):
+        map_string = ""
+        for row in self.map:
+            for char in row:
+                map_string += char
+            map_string += "\n"
+        print(map_string)
+
+    def print_map_with_player(self):
+        if self.have_map == True:
+            map_string = ""
+            for i, row in enumerate(self.blank_map):
+                for j, char in enumerate(row):
+                    if i == self.player_y and char == ' ' and j == self.player_x:
+                        map_string += 'P'
+                    else:
+                        map_string += char
+                map_string += "\n"
+            print(map_string)
+        else:
+            print("You haven't found a map yet. You can't see where you are on the map.")
+
+class Player:
+    def __init__(self, name = ""):
         self.name = name
         self.inventory = []
         self.location = "cavern"
@@ -24,54 +215,11 @@ class Player:
         self.health = 10
         self.max_health = 10
         self.is_torch_lit = False
+        self.have_rope = False
+        self.have_map = False
 
     def __repr__(self):
         return "{name} is currently in the {location}.".format(name = self.name, location = self.location)
-    
-    def go(self, direction):
-        if direction == "north":
-            if self.location == "cavern":
-                self.location = "tunnel"
-                print_line("You move north into the tunnel.")
-            elif self.location == "tunnel":
-                self.location = "cavern"
-                print_line("You move north into the cavern.")
-            elif self.location == "lake":
-                print_line("You can't go north from here.")
-            elif self.location == "rope":
-                print_line("You can't go north from here.")
-        elif direction == "south":
-            if self.location == "cavern":
-                print_line("You can't go south from here.")
-            elif self.location == "tunnel":
-                print_line("You can't go south from here.")
-            elif self.location == "lake":
-                print_line("You can't go south from here.")
-            elif self.location == "rope":
-                self.location = "cavern"
-                print_line("You move south into the cavern.")
-        elif direction == "east":
-            if self.location == "cavern":
-                print_line("You can't go east from here.")
-            elif self.location == "tunnel":
-                print_line("You can't go east from here.")
-            elif self.location == "lake":
-                self.location = "cavern"
-                print_line("You move east into the cavern.")
-            elif self.location == "rope":
-                print_line("You can't go east from here.")
-        elif direction == "west":
-            if self.location == "cavern":
-                print_line("You can't go west from here.")
-            elif self.location == "tunnel":
-                print_line("You can't go west from here.")
-            elif self.location == "lake":
-                print_line("You can't go west from here.")
-            elif self.location == "rope":
-                self.location = "cavern"
-                print_line("You move west into the cavern.")
-        else:
-            print_line("You can't go that way.")
 
     def look(self):
         if self.location == "cavern":
@@ -85,13 +233,13 @@ class Player:
         elif self.location == "rope":
             print_line("You are hanging from a rope. There is a large cavern below you.\n")
 
-    def inventory(self):
-        if len(self.inventory) == 0:
-            print_line("You are not carrying anything.\n")
-        else:
-            print_line("You are carrying:")
-            for item in self.inventory:
-                print_line(item)
+    # def inventory(self):
+    #     if len(self.inventory) == 0:
+    #         print_line("You are not carrying anything.\n")
+    #     else:
+    #         print_line("You are carrying:")
+    #         for item in self.inventory:
+    #             print_line(item)
 
     def take(self, item):
         if item == "torch":
@@ -143,32 +291,13 @@ class Player:
         print_line("You can use items by typing 'use' and then the name of the item. For example, 'use torch'.\n")
         print_line("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.\n")
         print_line("You can type 'quit' to quit the game at any time.\n")
-        print_line("You can type 'save' to save the game at any time.\n")
-        print_line("You can type 'load' to load the game at any time.\n")
-        print_line("You can type 'restart' to restart the game at any time.\n")
-        print_line("You can type 'reset' to reset the game at any time.\n")
 
     def quit(self):
         print_line("You quit the game.")
         exit()
 
-    # def save(self):
-    #     print_line("You save the game.")
-    #     exit()
-
-    # def load(self):
-    #     print_line("You load the game.")
-    #     exit()
-
-    # def restart(self):
-    #     print_line("You restart the game.")
-    #     exit()
-
-    # def reset(self):
-    #     print_line("You reset the game.")
-    #     exit()
-
 player = Player()
+map1 = Map()
 
 # ascii_banner = pyfiglet.figlet_format("The Cave")
 # print(ascii_banner)
@@ -180,10 +309,6 @@ player = Player()
 # input("You can use items by typing 'use' and then the name of the item. For example, 'use torch'.")
 # input("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.")
 # input("You can type 'quit' to quit the game at any time.")
-# input("You can type 'save' to save the game at any time.")
-# input("You can type 'load' to load the game at any time.")
-# input("You can type 'restart' to restart the game at any time.")
-# input("You can type 'reset' to reset the game at any time.")
 # print_line_input("Press enter to begin.")
 # input()
 os.system('cls')
@@ -210,13 +335,13 @@ print_line_input("'I'm going to try and find a way to get you out of there. I'll
 while player.is_alive == True:
     print_line("What do you want to do?\n")
     action = input("Please enter a command: ")
-    if action == "go":
-        direction = input("Please enter a direction: ")
-        player.go(direction)
+    if action == "north" or action == "south" or action == "east" or action == "west":
+        map1.move(action)
+        map1.print_map_with_player()
     elif action == "look":
         player.look()
-    elif action == "inventory":
-        player.inventory()
+    # elif action == "inventory":
+    #     player.inventory()
     elif action == "take":
         item = input("Please enter an item: ")
         player.take(item)
@@ -228,15 +353,11 @@ while player.is_alive == True:
         player.use(item)
     elif action == "help":
         player.help()
+    elif action == "map":
+        map1.print_map_with_player()
     elif action == "quit":
         player.quit()
-    # elif action == "save":
-    #     player.save()
-    # elif action == "load":
-    #     player.load()
-    # elif action == "restart":
-    #     player.restart()
-    # elif action == "reset":
-    #     player.reset()
+    elif action == "print1":
+        print("This is working")
     else:
         print_line("I don't understand that command. Please try again.\n")
