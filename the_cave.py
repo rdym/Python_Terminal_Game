@@ -31,7 +31,7 @@ class Map():
                     ['C', 'C', 'C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
                     ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', 'C', 'C'],
                     ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C'],
-                    ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
+                    ['C', 'C', 'C', 'C', 'C', 'L', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
                     ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
                     ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
                     ['C', 'C', 'C', 'C', 'C', 'C', ' ', ' ', ' ', ' ', ' ', ' ', ' ', 'C', 'C', 'C', 'C', 'C', ' ', 'C'],
@@ -90,15 +90,27 @@ class Map():
         if self.map[y-1][x] == ' ':
             self.can_move_north = True
             can_move_directions.append('north')
+        if self.map[y-1][x] == 'R':
+            self.can_move_north = True
+            can_move_directions.append('north to pickup a rope')
         if self.map[y + 1][x] == ' ':
             self.can_move_south = True
             can_move_directions.append('south')
+        if self.map[y + 1][x] == 'R':
+            self.can_move_south = True
+            can_move_directions.append('south to pickup a rope')
         if self.map[y][x + 1] == ' ':
             self.can_move_east = True
             can_move_directions.append('east')
+        if self.map[y][x + 1] == 'R':
+            self.can_move_east = True
+            can_move_directions.append('east to pickup a rope')
         if self.map[y][x - 1] == ' ':
             self.can_move_west = True
             can_move_directions.append('west')
+        if self.map[y][x - 1] == 'R':
+            self.can_move_west = True
+            can_move_directions.append('west to pickup a rope')
         new_can_move = can_move_directions[0]
         if len(can_move_directions) > 1:
             if len(can_move_directions) == 2:
@@ -209,12 +221,12 @@ class Map():
 class Player:
     def __init__(self, name = ""):
         self.name = name
-        self.inventory = []
+        self.inventory = ['lantern']
         self.location = "cavern"
         self.is_alive = True
         self.health = 10
         self.max_health = 10
-        self.is_torch_lit = False
+        self.is_lantern_lit = False
         self.have_rope = False
         self.have_map = False
 
@@ -242,53 +254,64 @@ class Player:
     #             print_line(item)
 
     def take(self, item):
-        if item == "torch":
+        if item == "lantern":
             if self.location == "cavern":
-                if "torch" in self.inventory:
-                    print_line("You already have a torch.")
+                if "lantern" in self.inventory:
+                    print_line("You already have a lantern.")
                 else:
-                    self.inventory.append("torch")
-                    print_line("You take the torch.")
+                    self.inventory.append("lantern")
+                    print_line("You take the lantern.")
             else:
                 print_line("You can't take that.")
         else:
             print_line("You can't take that.")
 
     def drop(self, item):
-        if item == "torch":
+        if item == "lantern":
             if self.location == "cavern":
-                if "torch" in self.inventory:
-                    self.inventory.remove("torch")
-                    print_line("You drop the torch.")
+                if "lantern" in self.inventory:
+                    self.inventory.remove("lantern")
+                    print_line("You drop the lantern.")
                 else:
-                    print_line("You don't have a torch.")
+                    print_line("You don't have a lantern.")
             else:
                 print_line("You can't drop that.")
         else:
             print_line("You can't drop that.")
 
     def use(self, item):
-        if item == "torch":
-            if self.location == "cavern":
-                if "torch" in self.inventory:
-                    if self.is_torch_lit == True:
-                        print_line("The torch is already lit.")
-                    else:
-                        self.is_torch_lit = True
-                        print_line("You light the torch.")
+        # if item == "lantern":
+        #     if self.location == "cavern":
+        #         if "lantern" in self.inventory:
+        #             if self.is_lantern_lit == True:
+        #                 print_line("The lantern is already lit.")
+        #             else:
+        #                 self.is_lantern_lit = True
+        #                 print_line("You light the lantern.")
+        #         else:
+        #             print_line("You don't have a lantern.")
+        #     else:
+        #         print_line("You can't use that.")
+        if item == "rope":
+            if self.location == "rope":
+                if self.have_rope == True:
+                    print_line("You are already holding the rope.")
                 else:
-                    print_line("You don't have a torch.")
+                    self.have_rope = True
+                    print_line("You grab the rope.")
             else:
                 print_line("You can't use that.")
+        # if item == "map":
+
         else:
             print_line("You can't use that.")
 
     def help(self):
         print_line("You can move around the cave by typing 'go' and then the direction you want to go in. For example, 'go north' or 'go south'.\n")
         print_line("You can look around the room you are in by typing 'look'.\n")
-        print_line("You can pick up items by typing 'take' and then the name of the item. For example, 'take torch'.\n")
-        print_line("You can drop items by typing 'drop' and then the name of the item. For example, 'drop torch'.\n")
-        print_line("You can use items by typing 'use' and then the name of the item. For example, 'use torch'.\n")
+        print_line("You can pick up items by typing 'take' and then the name of the item. For example, 'take lantern'.\n")
+        print_line("You can drop items by typing 'drop' and then the name of the item. For example, 'drop lantern'.\n")
+        print_line("You can use items by typing 'use' and then the name of the item. For example, 'use lantern'.\n")
         print_line("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.\n")
         print_line("You can type 'quit' to quit the game at any time.\n")
 
@@ -304,9 +327,9 @@ map1 = Map()
 # print_line_input("Welcome to The Cave! You have fallen into a cave in a remote location and must find your way out. You have a limited amount of time to escape before you run out of supplies. Good luck!")
 # print_line_input("You will be able to move around the cave by typing 'go' and then the direction you want to go in. For example, 'go north' or 'go south'.")
 # input("You can also type 'look' to look around the room you are in and 'inventory' to see what you are carrying.")
-# input("You can pick up items by typing 'take' and then the name of the item. For example, 'take torch'.")
-# input("You can drop items by typing 'drop' and then the name of the item. For example, 'drop torch'.")
-# input("You can use items by typing 'use' and then the name of the item. For example, 'use torch'.")
+# input("You can pick up items by typing 'take' and then the name of the item. For example, 'take lantern'.")
+# input("You can drop items by typing 'drop' and then the name of the item. For example, 'drop lantern'.")
+# input("You can use items by typing 'use' and then the name of the item. For example, 'use lantern'.")
 # input("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.")
 # input("You can type 'quit' to quit the game at any time.")
 # print_line_input("Press enter to begin.")
@@ -318,7 +341,7 @@ print(opening_banner)
 sleep(0.5)
 
 # print_line_input("You wake up in a dim cave. You can't remember how you got here or where you are. You can't see anything, but you can feel something in your pocket.")
-# print_line_input("You take the item out of your pocket and feel it. It's a torch! You can use this to see in the dark. You light the torch and look around.")
+# print_line_input("You take the item out of your pocket and feel it. It's a lantern! You can use this to see in the dark. You light the lantern and look around.")
 # print_line_input("You are lying in the centre of a large cavern, with the evening sun shining dimly through a hole in the ceiling far above.")
 # print_line_input("You can see a tunnel leading north, a tunnel leading south, a small tunnel leading east, and a small lake to the west.")
 # print_line_input("Far above you in the ceiling, you can dimly see a tattered rope hanging down from the hole in the ceiling.")
