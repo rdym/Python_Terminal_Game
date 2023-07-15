@@ -218,10 +218,13 @@ class Map():
         else:
             print("You haven't found a map yet. You can't see where you are on the map.")
 
+
+map1 = Map()
+
 class Player:
     def __init__(self, name = ""):
         self.name = name
-        self.inventory = ['lantern']
+        self.inventory = []
         self.location = "cavern"
         self.is_alive = True
         self.health = 10
@@ -229,29 +232,73 @@ class Player:
         self.is_lantern_lit = False
         self.have_rope = False
         self.have_map = False
+        self.player_x = map1.player_x
+        self.player_y = map1.player_y
 
     def __repr__(self):
         return "{name} is currently in the {location}.".format(name = self.name, location = self.location)
 
     def look(self):
-        if self.location == "cavern":
-            print_line("You are lying in the centre of a large cavern, with the evening sun shining dimly through a hole in the ceiling far above.\n")
-            print_line("You can see a tunnel leading north, a small tunnel leading south, a small tunnel leading east, and a small lake to the west.\n")
-            print_line("Far above you in the ceiling, you can dimly see a tattered rope hanging down from the hole in the ceiling.\n")
-        elif self.location == "tunnel":
-            print_line("You are in a small tunnel. There is a large cavern to the south.\n")
-        elif self.location == "lake":
-            print_line("You are standing on the shore of a small lake. There is a large cavern to the east.\n")
-        elif self.location == "rope":
-            print_line("You are hanging from a rope. There is a large cavern below you.\n")
 
-    # def inventory(self):
-    #     if len(self.inventory) == 0:
-    #         print_line("You are not carrying anything.\n")
-    #     else:
-    #         print_line("You are carrying:")
-    #         for item in self.inventory:
-    #             print_line(item)
+        look_directions = []
+        x = map1.player_x
+        y = map1.player_y
+
+        if map1.map[y-1][x] == ' ':
+            look_directions.append('the path is clear to the north')
+        elif map1.map[y-1][x] == 'R':
+            look_directions.append('there is a rope to the north')
+        elif map1.map[y-1][x] == 'M':
+            look_directions.append('there is a map to the north')
+        elif map1.map[y-1][x] == 'L':
+            look_directions.append('there is a ladder to the north')
+        else:
+            look_directions.append('there is a wall to the north')
+
+        if map1.map[y + 1][x] == ' ':
+            look_directions.append('the path is clear to the south')
+        elif map1.map[y + 1][x] == 'R':
+            look_directions.append('there is a rope to the south')
+        elif map1.map[y + 1][x] == 'M':
+            look_directions.append('there is a map to the south')
+        elif map1.map[y + 1][x] == 'L':
+            look_directions.append('there is a ladder to the south')
+        else:
+            look_directions.append('there is a wall to the south')
+
+        if map1.map[y][x + 1] == ' ':
+            look_directions.append('the path is clear to the east')
+        elif map1.map[y][x + 1] == 'R':
+            look_directions.append('there is a rope to the east')
+        elif map1.map[y][x + 1] == 'M':
+            look_directions.append('there is a map to the east')
+        elif map1.map[y][x + 1] == 'L':
+            look_directions.append('there is a ladder to the east')
+        else:
+            look_directions.append('there is a wall to the east')
+
+        if map1.map[y][x - 1] == ' ':
+            look_directions.append('the path is clear to the west')
+        elif map1.map[y][x - 1] == 'R':
+            look_directions.append('there is a rope to the west')
+        elif map1.map[y][x - 1] == 'M':
+            look_directions.append('there is a map to the west')
+        elif map1.map[y][x - 1] == 'L':
+            look_directions.append('there is a ladder to the west')
+        elif map1.map[y][x - 1] == 'C':
+            look_directions.append('there is a cave wall to the west')
+        else:
+            look_directions.append('there is a wall to the west')
+
+        print_line("You look around and see that " + look_directions[0] + ", " + look_directions[1] + ", " + look_directions[2] + ", " + look_directions[3] + "." + "\n")
+
+    def inventory(self):
+        if len(self.inventory) == 0:
+            print_line("You are not carrying anything.\n")
+        else:
+            print_line("You are carrying:")
+            for item in self.inventory:
+                print_line(item)
 
     def take(self, item):
         if item == "lantern":
@@ -320,20 +367,18 @@ class Player:
         exit()
 
 player = Player()
-map1 = Map()
 
 # ascii_banner = pyfiglet.figlet_format("The Cave")
 # print(ascii_banner)
 # print_line_input("Welcome to The Cave! You have fallen into a cave in a remote location and must find your way out. You have a limited amount of time to escape before you run out of supplies. Good luck!")
-# print_line_input("You will be able to move around the cave by typing 'go' and then the direction you want to go in. For example, 'go north' or 'go south'.")
-# input("You can also type 'look' to look around the room you are in and 'inventory' to see what you are carrying.")
-# input("You can pick up items by typing 'take' and then the name of the item. For example, 'take lantern'.")
-# input("You can drop items by typing 'drop' and then the name of the item. For example, 'drop lantern'.")
-# input("You can use items by typing 'use' and then the name of the item. For example, 'use lantern'.")
-# input("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.")
-# input("You can type 'quit' to quit the game at any time.")
+# print_line_input("You will be able to move around the cave by typing the direction you want to go in. For example, 'north' or 'south'.")
+# print_line_input("You can also type 'look' to look around the room you are in and 'inventory' to see what you are carrying.")
+# print_line_input("You can pick up items by typing 'take' and then the name of the item. For example, 'take lantern'.")
+# print_line_input("You can drop items by typing 'drop' and then the name of the item. For example, 'drop lantern'.")
+# print_line_input("You can use items by typing 'use' and then the name of the item. For example, 'use lantern'.")
+# print_line_input("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.")
+# print_line_input("You can type 'quit' to quit the game at any time.")
 # print_line_input("Press enter to begin.")
-# input()
 os.system('cls')
 
 opening_banner = pyfiglet.figlet_format("Welcome to the Cave!")
@@ -343,17 +388,15 @@ sleep(0.5)
 # print_line_input("You wake up in a dim cave. You can't remember how you got here or where you are. You can't see anything, but you can feel something in your pocket.")
 # print_line_input("You take the item out of your pocket and feel it. It's a lantern! You can use this to see in the dark. You light the lantern and look around.")
 # print_line_input("You are lying in the centre of a large cavern, with the evening sun shining dimly through a hole in the ceiling far above.")
-# print_line_input("You can see a tunnel leading north, a tunnel leading south, a small tunnel leading east, and a small lake to the west.")
 # print_line_input("Far above you in the ceiling, you can dimly see a tattered rope hanging down from the hole in the ceiling.")
 # print_line_input("Suddenly, you hear static coming from your pocket. You take out the radio and hear a voice.")
 # print_line_input("'KRRRRSSSSSHZZZZZTTHZZZZZ...Hello? Is anyone there?...KRRRRSSSSSHZZZZZTTHZZZZZ...He...KRRRRSSSSSHZZZZZTTHZZZZZ...Hello...yone the...KRRRSSHHT'")
 # print_line_input("You pick up the radio and say 'Hello'.")
 # print_line_input("'KRRRRSSH Hello! Wow someone can hear me! I'm so glad! I heard a loud noise and thought someone must be down there!'")
-
-print_line("'What's your name?'\n")
-player.name = input("Please enter your name: ")
-print_line_input("'Wow I can't believe I found you {name}! I'm so glad you're okay! I think I can see you moving below'. You see a figure waving at you far above.".format(name = player.name))
-print_line_input("'I'm going to try and find a way to get you out of there. I'll be back soon!'")
+# print_line("'What's your name?'\n")
+# player.name = input("Please enter your name: ")
+# print_line_input("'Wow I can't believe I found you {name}! I'm so glad you're okay! I think I can see you moving below'. You see a figure waving at you far above.".format(name = player.name))
+# print_line_input("'I'm going to try and find a way to get you out of there. I'll be back soon!'")
 
 while player.is_alive == True:
     print_line("What do you want to do?\n")
