@@ -225,7 +225,6 @@ class Player:
     def __init__(self, name = ""):
         self.name = name
         self.inventory = []
-        self.location = "cavern"
         self.is_alive = True
         self.health = 10
         self.max_health = 10
@@ -236,7 +235,7 @@ class Player:
         self.player_y = map1.player_y
 
     def __repr__(self):
-        return "{name} is currently in the {location}.".format(name = self.name, location = self.location)
+        return "The current player is called {name}.".format(name = self.name, location = self.location)
 
     def look(self):
 
@@ -285,14 +284,12 @@ class Player:
             look_directions.append('there is a map to the west')
         elif map1.map[y][x - 1] == 'L':
             look_directions.append('there is a ladder to the west')
-        elif map1.map[y][x - 1] == 'C':
-            look_directions.append('there is a cave wall to the west')
         else:
             look_directions.append('there is a wall to the west')
 
-        print_line("You look around and see that " + look_directions[0] + ", " + look_directions[1] + ", " + look_directions[2] + ", " + look_directions[3] + "." + "\n")
+        print_line("You look around and see that " + look_directions[0] + ", " + look_directions[1] + ", " + look_directions[2] + " and " + look_directions[3] + "." + "\n")
 
-    def inventory(self):
+    def check_inventory(self):
         if len(self.inventory) == 0:
             print_line("You are not carrying anything.\n")
         else:
@@ -300,66 +297,64 @@ class Player:
             for item in self.inventory:
                 print_line(item)
 
-    def take(self, item):
-        if item == "lantern":
-            if self.location == "cavern":
-                if "lantern" in self.inventory:
-                    print_line("You already have a lantern.")
-                else:
-                    self.inventory.append("lantern")
-                    print_line("You take the lantern.")
-            else:
-                print_line("You can't take that.")
-        else:
-            print_line("You can't take that.")
+    # def take(self, item):
+    #     if item == "lantern":
+    #         if self.location == "cavern":
+    #             if "lantern" in self.inventory:
+    #                 print_line("You already have a lantern.")
+    #             else:
+    #                 self.inventory.append("lantern")
+    #                 print_line("You take the lantern.")
+    #         else:
+    #             print_line("You can't take that.")
+    #     else:
+    #         print_line("You can't take that.")
 
-    def drop(self, item):
-        if item == "lantern":
-            if self.location == "cavern":
-                if "lantern" in self.inventory:
-                    self.inventory.remove("lantern")
-                    print_line("You drop the lantern.")
-                else:
-                    print_line("You don't have a lantern.")
-            else:
-                print_line("You can't drop that.")
-        else:
-            print_line("You can't drop that.")
+    # def drop(self, item):
+    #     if item == "lantern":
+    #         if self.location == "cavern":
+    #             if "lantern" in self.inventory:
+    #                 self.inventory.remove("lantern")
+    #                 print_line("You drop the lantern.")
+    #             else:
+    #                 print_line("You don't have a lantern.")
+    #         else:
+    #             print_line("You can't drop that.")
+    #     else:
+    #         print_line("You can't drop that.")
 
-    def use(self, item):
-        # if item == "lantern":
-        #     if self.location == "cavern":
-        #         if "lantern" in self.inventory:
-        #             if self.is_lantern_lit == True:
-        #                 print_line("The lantern is already lit.")
-        #             else:
-        #                 self.is_lantern_lit = True
-        #                 print_line("You light the lantern.")
-        #         else:
-        #             print_line("You don't have a lantern.")
-        #     else:
-        #         print_line("You can't use that.")
+    def use(self, item, target = None):
+
         if item == "rope":
-            if self.location == "rope":
-                if self.have_rope == True:
-                    print_line("You are already holding the rope.")
+            if self.have_rope == True:
+                if target == "ladder":
+                    print_line("You can't use the rope on the ladder.\n")
+                elif target == "ledge":
+                    print_line("You tie the rope to the ledge and climb down to the bottom.\n")
+                    # Need to add some functionality here to move the player to the bottom of the cave
+                    # Will likely need to add a second map layer, a variable that controls which layer is displayed and a function to switch between the two
                 else:
-                    self.have_rope = True
-                    print_line("You grab the rope.")
+                    print_line("You can't use the rope on that.\n")
             else:
-                print_line("You can't use that.")
+                print_line("You don't have a rope.\n")
+        elif item == "map":
+            if self.have_map == True:
+                map1.print_map_with_player()
+            else:
+                print_line("You don't have a map.\n")
+
         # if item == "map":
 
         else:
-            print_line("You can't use that.")
+            print_line("You don't have that item.\n")
 
     def help(self):
-        print_line("You can move around the cave by typing 'go' and then the direction you want to go in. For example, 'go north' or 'go south'.\n")
-        print_line("You can look around the room you are in by typing 'look'.\n")
-        print_line("You can pick up items by typing 'take' and then the name of the item. For example, 'take lantern'.\n")
-        print_line("You can drop items by typing 'drop' and then the name of the item. For example, 'drop lantern'.\n")
-        print_line("You can use items by typing 'use' and then the name of the item. For example, 'use lantern'.\n")
-        print_line("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.\n")
+        print_line("You will be able to move around the cave by typing the direction you want to go in. For example, 'north' or 'south'.\n")
+        print_line("You can look around yourself by typing 'look'.\n")
+        # print_line("You can pick up items by typing 'take' and then the name of the item. For example, 'take lantern'.\n")
+        # print_line("You can drop items by typing 'drop' and then the name of the item. For example, 'drop lantern'.\n")
+        print_line("You can use items by typing 'use' and then the name of the 'item' and the 'target' for the item's use.\n")
+        # print_line("You can also type 'help' to see this list of commands again...if anyone is close enough to help you.\n") # Is this unnecessary?
         print_line("You can type 'quit' to quit the game at any time.\n")
 
     def quit(self):
@@ -385,10 +380,10 @@ opening_banner = pyfiglet.figlet_format("Welcome to the Cave!")
 print(opening_banner)
 sleep(0.5)
 
-# print_line_input("You wake up in a dim cave. You can't remember how you got here or where you are. You can't see anything, but you can feel something in your pocket.")
+# print_line_input("You wake up in a dark cave. You can't remember how you got here or where you are. You can't see anything, but you can feel something next to you on the ground.")
 # print_line_input("You take the item out of your pocket and feel it. It's a lantern! You can use this to see in the dark. You light the lantern and look around.")
-# print_line_input("You are lying in the centre of a large cavern, with the evening sun shining dimly through a hole in the ceiling far above.")
-# print_line_input("Far above you in the ceiling, you can dimly see a tattered rope hanging down from the hole in the ceiling.")
+# print_line_input("You can see a short distance around yourself from the dim lantern light. You are lying in the centre of a large cavern, with the evening sun shining dimly through a hole in the ceiling far above.")
+# print_line_input("You can dimly make out a tattered rope hanging down from the hole in the ceiling.")
 # print_line_input("Suddenly, you hear static coming from your pocket. You take out the radio and hear a voice.")
 # print_line_input("'KRRRRSSSSSHZZZZZTTHZZZZZ...Hello? Is anyone there?...KRRRRSSSSSHZZZZZTTHZZZZZ...He...KRRRRSSSSSHZZZZZTTHZZZZZ...Hello...yone the...KRRRSSHHT'")
 # print_line_input("You pick up the radio and say 'Hello'.")
@@ -403,24 +398,29 @@ while player.is_alive == True:
     action = input("Please enter a command: ")
     if action == "north" or action == "south" or action == "east" or action == "west":
         map1.move(action)
-        map1.print_map_with_player()
     elif action == "look":
         player.look()
-    # elif action == "inventory":
-    #     player.inventory()
-    elif action == "take":
-        item = input("Please enter an item: ")
-        player.take(item)
-    elif action == "drop":
-        item = input("Please enter an item: ")
-        player.drop(item)
+    elif action == "inventory":
+        player.check_inventory()
+    # elif action == "take": # Consider removing this command
+    #     item = input("Please enter an item: ")
+    #     player.take(item)
+    # elif action == "drop": # Consider removing this command
+    #     item = input("Please enter an item: ")
+    #     player.drop(item)
     elif action == "use":
-        item = input("Please enter an item: ")
-        player.use(item)
+        item, *target = input("Please enter an item and target (if required): ").split()
+        if item == "map":
+            player.use(item)
+        else:
+            if len(target) == 0 and item in player.inventory: # Check whether this is the correct syntax
+                print_line("You need to specify a target for that item.\n")
+            else:
+                player.use(item, target[0])
     elif action == "help":
         player.help()
-    elif action == "map":
-        map1.print_map_with_player()
+    # elif action == "map": # Consider moving this functionality to the use command
+    #     map1.print_map_with_player()
     elif action == "quit":
         player.quit()
     elif action == "print1":
