@@ -28,10 +28,10 @@ class Map():
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','R',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','A','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','G','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','M',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C',' ',' ','B',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C',' ','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C'],
@@ -39,7 +39,7 @@ class Map():
                           ['C','C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C',' ','C','C','C','C','C',' ',' ',' ','R','C'],
                           ['C','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C',' ','C','C','C','C',' ',' ',' ',' ',' ','C'],
                           ['C','C','C','C',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C'],
-                          ['C','C','C','C',' ','G','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C'],
+                          ['C','C','C','C',' ','M','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C'],
                           ['C','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
@@ -54,7 +54,7 @@ class Map():
                             ['C','C','C','C',' ',' ','C','C','C','C','C',' ','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C'],
                             ['C','C',' ',' ',' ','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
                             ['C','C',' ','C','C','C','C','C','C','C','U',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
-                            ['C','C','M','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','U','C','C','C','C',' ',' ','C','C','C'],
+                            ['C','C',' ','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','U','C','C','C','C',' ',' ','C','C','C'],
                             ['C','C','C','C','C','C','C','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','C','C'],
                             ['C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ','C','C'],
                             ['C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ','C','C'],
@@ -69,7 +69,7 @@ class Map():
                             ['C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C',' ','C','C','C'],
                             ['C','C','C','C','C',' ','C','C','C','C','C','C',' ',' ','C',' ',' ','C','C','C','C','C','C','C','C',' ',' ','C','C','C'],
                             ['C','C','C','C','C',' ','C','C','C','C','C',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ','C','C','C','C'],
-                            ['C','A',' ',' ',' ',' ','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ',' ','C','C','C','C'],
+                            ['C','G',' ',' ',' ',' ','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ',' ','C','C','C','C'],
                             ['C',' ',' ',' ','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C'],
                             ['C',' ',' ',' ','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C'],
                             ['C',' ',' ',' ','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C',' ',' ','C','C','C','C','C','C'],
@@ -544,8 +544,6 @@ class Map():
         else:
             print("Something went wrong with the map levels")
 
-
-
 map1 = Map()
 
 class Player:
@@ -693,7 +691,7 @@ class Player:
     def use(self, item, target = None):
 
         if item == "map":
-            if self.have_map == True:
+            if map1.have_map == True:
                 map1.print_map_with_player()
             else:
                 print_line("You don't have a map.\n")
@@ -750,11 +748,13 @@ class Player:
             print_line("You don't have that item.\n")
 
     def help(self):
+        print_line("Hey there {name}, hope you're still ok down there! Here's a list of things you can do to try and escape.\n".format(name = self.name))
         print_line("You will be able to move around the cave by typing the direction you want to go in. For example, 'north' or 'south'.\n")
-        print_line("You can look around yourself by typing 'look'.\n")
-        print_line("You can use items by typing 'use' and then the name of the 'item' and the 'target' for the item's use.\n")
+        print_line("You can also type 'look' to look around the room you are in and 'inventory' to see what you are carrying.")
+        print_line("You can use items by typing 'use' and then the name of the 'item' and the 'target' for the item's use (if required). For example, 'use' then 'map', or 'use' then 'pickaxe rubble'\n")
         print_line("You can also type 'help' to see this list of commands again.\n")
         print_line("You can type 'quit' to quit the game at any time.\n")
+        print_line("Good luck friend, hope you escape!\n")
 
     def quit(self):
         print_line("You quit the game.")
@@ -764,20 +764,18 @@ player = Player()
 
 # ascii_banner = pyfiglet.figlet_format("The Cave")
 # print(ascii_banner)
-# print_line_input("Welcome to The Cave! You have fallen into a cave in a remote location and must find your way out. You have a limited amount of time to escape before you run out of supplies. Good luck!")
+# print_line_input("Welcome to The Cave! You have fallen into a cave in a remote location and must find your way out. Good luck!")
 # print_line_input("You will be able to move around the cave by typing the direction you want to go in. For example, 'north' or 'south'.")
 # print_line_input("You can also type 'look' to look around the room you are in and 'inventory' to see what you are carrying.")
-# print_line_input("You can use items by typing 'use' and then the name of the item. For example, 'use lantern'.")
+# print_line_input("You can use items by typing 'use' and then the name of the 'item' and the 'target' for the item's use (if required). For example, 'use' then 'map', or 'use' then 'pickaxe rubble'.")
 # print_line_input("You can also type 'help' to see this list of commands again.")
 # print_line_input("You can type 'quit' to quit the game at any time.")
 # print_line_input("Press enter to begin.")
-os.system('cls')
+# os.system('cls')
 
-#map1.print_area_around_player()
-
-opening_banner = pyfiglet.figlet_format("Welcome to the Cave!")
-print(opening_banner)
-sleep(0.5)
+# opening_banner = pyfiglet.figlet_format("Welcome to The Cave!")
+# print(opening_banner)
+# sleep(0.5)
 
 # print_line_input("You wake up in a dark cave. You can't remember how you got here or where you are. You can't see anything, but you can feel something next to you on the ground.")
 # print_line_input("You take the item out of your pocket and feel it. It's a lantern! You can use this to see in the dark. You light the lantern and look around.")
@@ -791,9 +789,13 @@ sleep(0.5)
 # player.name = input("Please enter your name: ")
 # print_line_input("'Wow I can't believe I found you {name}! I'm so glad you're okay! I think I can see you moving below'. You see a figure waving at you far above.".format(name = player.name))
 # print_line_input("'I'm going to try and find a way to get you out of there. I'll be back soon!'")
+# print_line_input("The radio goes silent. You are alone in the cave. You need to find a way out.")
+# print_line_input("Press Enter to continue.")
+# os.system('cls')
+
+map1.print_area_around_player()
 
 while player.is_alive == True:
-    print_line("What do you want to do?\n")
     action = input("Please enter a command: ")
     os.system('cls')
     if action.lower() == "north" or action.lower() == "south" or action.lower() == "east" or action.lower() == "west" or action.lower() == "n" or action.lower() == "s" or action.lower() == "e" or action.lower() == "w":
@@ -803,21 +805,30 @@ while player.is_alive == True:
         player.add_to_inventory()
     elif action.lower() == "look" or action.lower() == "l":
         player.look()
+        map1.print_area_around_player()
     elif action.lower() == "inventory" or action.lower() == "i":
         player.check_inventory()
+        map1.print_area_around_player()
     elif action.lower() == "use" or action.lower() == "u":
         item, *target = input("Please enter an item and target (if required): ").split()
         if item.lower() == "map":
             player.use(item)
         else:
-            if len(target) == 0 and item in player.inventory: # Check whether this is the correct syntax
+            if len(target) == 0 and item in player.inventory:
                 print_line("You need to specify a target for that item.\n")
+                map1.print_area_around_player()
+            elif len(target) == 0:
+                print_line("You need to define a target for that item.\n")
+                map1.print_area_around_player()
             else:
                 player.use(item, target[0])
+                map1.print_area_around_player()
     elif action.lower() == "help" or action.lower() == "h":
         player.help()
+        map1.print_area_around_player()
     elif action.lower() == "quit" or action.lower() == "q":
         input("Are you sure you want to quit? (Press enter to confirm)")
         player.quit()
     else:
         print_line("I don't understand that command. Please try again.\n")
+        map1.print_area_around_player()
