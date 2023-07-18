@@ -19,19 +19,19 @@ class Map():
         self.player_x = player_x
         self.player_y = player_y
         self.start_map = [['C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
-                          ['C','LU',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
+                          ['C','U',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C',' ',' ',' ','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C',' ',' ',' ','LD','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','LD','C','C','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C',' ',' ',' ','D','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','D','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','R',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','A','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','G','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','M',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C',' ',' ','B',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C',' ','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C'],
@@ -53,8 +53,8 @@ class Map():
                             ['C','C','C','C','C',' ',' ',' ','C','C','C',' ','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C'],
                             ['C','C','C','C',' ',' ','C','C','C','C','C',' ','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C'],
                             ['C','C',' ',' ',' ','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
-                            ['C','C',' ','C','C','C','C','C','C','C','LU',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
-                            ['C','C','M','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','LU','C','C','C','C',' ',' ','C','C','C'],
+                            ['C','C',' ','C','C','C','C','C','C','C','U',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
+                            ['C','C','M','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','U','C','C','C','C',' ',' ','C','C','C'],
                             ['C','C','C','C','C','C','C','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ','C','C'],
                             ['C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ','C','C'],
                             ['C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ','C','C'],
@@ -69,7 +69,7 @@ class Map():
                             ['C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','C',' ','C','C','C'],
                             ['C','C','C','C','C',' ','C','C','C','C','C','C',' ',' ','C',' ',' ','C','C','C','C','C','C','C','C',' ',' ','C','C','C'],
                             ['C','C','C','C','C',' ','C','C','C','C','C',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ','C','C','C','C'],
-                            ['C','PA',' ',' ',' ',' ','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ',' ','C','C','C','C'],
+                            ['C','A',' ',' ',' ',' ','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ',' ','C','C','C','C'],
                             ['C',' ',' ',' ','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C',' ','C','C','C','C','C'],
                             ['C',' ',' ',' ','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C'],
                             ['C',' ',' ',' ','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C',' ',' ','C','C','C','C','C','C'],
@@ -79,7 +79,7 @@ class Map():
                             ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C']]
         
         self.up_1_map = [['C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
-                         ['C','LD',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
+                         ['C','D',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C',' ',' ',' ','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
@@ -107,13 +107,25 @@ class Map():
                          ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C']]
+        
         self.map = self.start_map
         self.current_level = 0
         self.height = len(self.map)
         self.width = len(self.map[0])
         self.blank_map = [['?'] * self.width for _ in range(self.height)]
-        self.have_map = True
-        
+        self.have_map = False
+        self.have_grapple = False
+        self.have_rope = False
+        self.have_pickaxe = False
+
+        if self.current_level == 0:
+            self.map = self.start_map
+        elif self.current_level == 1:
+            self.map = self.up_1_map
+        elif self.current_level == -1:
+            self.map = self.down_1_map
+        else:
+            print("Something went wrong with the map levels")        
 
     def __repr__(self):
         return "Map(height = {height}, width = {width}, player_x = {player_x}, player_y = {player_y})".format(height = self.height, width = self.width, player_x = self.player_x, player_y = self.player_y)
@@ -171,8 +183,12 @@ class Map():
             can_move_directions.append('north to pick up a grappling hook')
         elif self.map[y-1][x] == 'B':
             can_move_directions.append('north is blocked by rubble')
-        elif self.map[y-1][x] == 'PA':
+        elif self.map[y-1][x] == 'A':
             can_move_directions.append('north to pick up a pickaxe')
+        elif self.map[y-1][x] == 'U':
+            can_move_directions.append('north to a ledge above')
+        elif self.map[y-1][x] == 'D':
+            can_move_directions.append('north to a ledge below')
 
         if self.map[y + 1][x] == ' ':
             can_move_directions.append('south')
@@ -186,8 +202,12 @@ class Map():
             can_move_directions.append('south to pick up a grappling hook')
         elif self.map[y + 1][x] == 'B':
             can_move_directions.append('south is blocked by rubble')
-        elif self.map[y + 1][x] == 'PA':
+        elif self.map[y + 1][x] == 'A':
             can_move_directions.append('south to pick up a pickaxe')
+        elif self.map[y + 1][x] == 'U':
+            can_move_directions.append('south to a ledge above')
+        elif self.map[y + 1][x] == 'D':
+            can_move_directions.append('south to a ledge below')
             
         if self.map[y][x + 1] == ' ':
             can_move_directions.append('east')
@@ -201,8 +221,12 @@ class Map():
             can_move_directions.append('east to pick up a grappling hook')
         elif self.map[y][x + 1] == 'B':
             can_move_directions.append('east is blocked by rubble')
-        elif self.map[y][x + 1] == 'PA':
+        elif self.map[y][x + 1] == 'A':
             can_move_directions.append('east to pick up a pickaxe')
+        elif self.map[y][x + 1] == 'U':
+            can_move_directions.append('east to a ledge above')
+        elif self.map[y][x + 1] == 'D':
+            can_move_directions.append('east to a ledge below')
             
         if self.map[y][x - 1] == ' ':
             can_move_directions.append('west')
@@ -216,8 +240,12 @@ class Map():
             can_move_directions.append('west to pick up a grappling hook')
         elif self.map[y][x - 1] == 'B':
             can_move_directions.append('west is blocked by rubble')
-        elif self.map[y][x - 1] == 'PA':
+        elif self.map[y][x - 1] == 'A':
             can_move_directions.append('west to pick up a pickaxe')
+        elif self.map[y][x - 1] == 'U':
+            can_move_directions.append('west to a ledge above')
+        elif self.map[y][x - 1] == 'D':
+            can_move_directions.append('west to a ledge below')
             
         new_can_move = can_move_directions[0]
         if len(can_move_directions) > 1:
@@ -232,18 +260,17 @@ class Map():
     
     def move(self, direction):
         
-        if direction.lower() == 'north':
+        if direction.lower() == 'north' or direction.lower() == 'n':
             new_cell = self.map[self.player_y - 1][self.player_x]
             if new_cell == ' ':
                 self.player_y -= 1
                 self.reveal_map(self.player_x, self.player_y)
             elif new_cell == 'R':
                 print("You found a rope!")
+                self.have_rope = True
                 self.player_y -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
-                self.inventory.append('rope')
-                self.have_rope = True
             elif new_cell == 'M':
                 print("You found a map!")
                 self.have_map = True
@@ -257,20 +284,42 @@ class Map():
                 self.game_won()
             elif new_cell == 'G':
                 print("You found a grappling hook!")
+                self.have_grapple = True
                 self.player_y -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
             elif new_cell == 'B':
                 print("The way is blocked by rubble, you'll need something to clear it with.")
-            elif new_cell == 'PA':
+            elif new_cell == 'A':
                 print("You found a pickaxe!")
+                self.have_pickaxe = True
                 self.player_y -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'U':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb up the ledge.")
+                    self.player_y -= 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb up there, it's too high! You'll need something to help you climb up.")
+                    self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'D':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb down the ledge.")
+                    self.player_y -= 1
+                    self.reveal_map(self.player_x, self.player_y)
+                elif self.have_rope == True:
+                    print("You use your rope to climb down the ledge.")
+                    self.player_y -= 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb down there, it's too high! You'll need something to help you climb down.")
+                    self.reveal_map(self.player_x, self.player_y)
             else:
                 self.can_move(self.player_x, self.player_y)
                 
-        elif direction.lower() == 'south':
+        elif direction.lower() == 'south' or direction.lower() == 's':
             new_cell = self.map[self.player_y + 1][self.player_x]
             if new_cell == ' ':
                 self.player_y += 1
@@ -280,12 +329,13 @@ class Map():
                 self.player_y += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_rope = True
             elif new_cell == 'M':
                 print("You found a map!")
-                self.have_map = True
                 self.player_y += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_map = True
             elif new_cell == 'E':
                 print("You found the exit!")
                 self.player_y += 1
@@ -296,12 +346,39 @@ class Map():
                 self.player_y += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_grapple = True
             elif new_cell == 'B':
                 print("The way is blocked by rubble, you'll need something to clear it with.")
+            elif new_cell == 'A':
+                print("You found a pickaxe!")
+                self.player_y += 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+                self.have_pickaxe = True
+            elif new_cell == 'U':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb up the ledge.")
+                    self.player_y += 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb up there, it's too high! You'll need something to help you climb up.")
+                    self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'D':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb down the ledge.")
+                    self.player_y += 1
+                    self.reveal_map(self.player_x, self.player_y)
+                elif self.have_rope == True:
+                    print("You use your rope to climb down the ledge.")
+                    self.player_y += 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb down there, it's too high! You'll need something to help you climb down.")
+                    self.reveal_map(self.player_x, self.player_y)
             else:
                 self.can_move(self.player_x, self.player_y)
                 
-        elif direction.lower() == 'east':
+        elif direction.lower() == 'east' or direction.lower() == 'e':
             new_cell = self.map[self.player_y][self.player_x + 1]
             if new_cell == ' ':
                 self.player_x += 1
@@ -311,12 +388,13 @@ class Map():
                 self.player_x += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_rope = True
             elif new_cell == 'M':
                 print("You found a map!")
-                self.have_map = True
                 self.player_x += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_map = True
             elif new_cell == 'E':
                 print("You found the exit!")
                 self.player_x += 1
@@ -327,12 +405,39 @@ class Map():
                 self.player_x += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_grapple = True
             elif new_cell == 'B':
                 print("The way is blocked by rubble, you'll need something to clear it with.")
+            elif new_cell == 'A':
+                print("You found a pickaxe!")
+                self.player_x += 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+                self.have_pickaxe = True
+            elif new_cell == 'U':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb up the ledge.")
+                    self.player_x += 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb up there, it's too high! You'll need something to help you climb up.")
+                    self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'D':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb down the ledge.")
+                    self.player_x += 1
+                    self.reveal_map(self.player_x, self.player_y)
+                elif self.have_rope == True:
+                    print("You use your rope to climb down the ledge.")
+                    self.player_x += 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb down there, it's too high! You'll need something to help you climb down.")
+                    self.reveal_map(self.player_x, self.player_y)
             else:
                 self.can_move(self.player_x, self.player_y)
                 
-        elif direction.lower() == 'west':
+        elif direction.lower() == 'west' or direction.lower() == 'w':
             new_cell = self.map[self.player_y][self.player_x - 1]
             if new_cell == ' ':
                 self.player_x -= 1
@@ -342,12 +447,13 @@ class Map():
                 self.player_x -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_rope = True
             elif new_cell == 'M':
                 print("You found a map!")
-                self.have_map = True
                 self.player_x -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_map = True
             elif new_cell == 'E':
                 print("You found the exit!")
                 self.player_x -= 1
@@ -358,8 +464,35 @@ class Map():
                 self.player_x -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
+                self.have_grapple = True
             elif new_cell == 'B':
                 print("The way is blocked by rubble, you'll need something to clear it with.")
+            elif new_cell == 'A':
+                print("You found a pickaxe!")
+                self.player_x -= 1
+                self.map[self.player_y][self.player_x] = ' '
+                self.reveal_map(self.player_x, self.player_y)
+                self.have_pickaxe = True
+            elif new_cell == 'U':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb up the ledge.")
+                    self.player_x -= 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb up there, it's too high! You'll need something to help you climb up.")
+                    self.reveal_map(self.player_x, self.player_y)
+            elif new_cell == 'D':
+                if self.have_grapple == True:
+                    print("You use your grappling hook to climb down the ledge.")
+                    self.player_x -= 1
+                    self.reveal_map(self.player_x, self.player_y)
+                elif self.have_rope == True:
+                    print("You use your rope to climb down the ledge.")
+                    self.player_x -= 1
+                    self.reveal_map(self.player_x, self.player_y)
+                else:
+                    print("You can't climb down there, it's too high! You'll need something to help you climb down.")
+                    self.reveal_map(self.player_x, self.player_y)
             else:
                 self.can_move(self.player_x, self.player_y)
 
@@ -387,9 +520,9 @@ class Map():
             
     def print_area_around_player(self):
         map_string = ""
-        player_map = [self.map[self.player_y - 1][self.player_x - 1:self.player_x + 1],
-                      self.map[self.player_y][self.player_x - 1:self.player_x + 1],
-                      self.map[self.player_y + 1][self.player_x - 1:self.player_x + 1]]
+        player_map = [self.map[self.player_y - 1][self.player_x - 1:self.player_x + 2],
+                      self.map[self.player_y][self.player_x - 1:self.player_x + 2],
+                      self.map[self.player_y + 1][self.player_x - 1:self.player_x + 2]]
         for i, row in enumerate(player_map):
             for j, char in enumerate(row):
                 if i == 1 and j == 1:
@@ -398,9 +531,6 @@ class Map():
                     map_string += char
             map_string += "\n"
         print(map_string)
-            
-
-
 
 map1 = Map()
 
@@ -411,9 +541,6 @@ class Player:
         self.is_alive = True
         self.health = 10
         self.max_health = 10
-        self.is_lantern_lit = False
-        self.have_rope = False
-        self.have_map = False
         self.player_x = map1.player_x
         self.player_y = map1.player_y
 
@@ -434,6 +561,18 @@ class Player:
             look_directions.append('there is a map to the north')
         elif map1.map[y-1][x] == 'L':
             look_directions.append('there is a ladder to the north')
+        elif map1.map[y-1][x] == 'B':
+            look_directions.append('there is a pile of rubble to the north')
+        elif map1.map[y-1][x] == 'A':
+            look_directions.append('there is a pickaxe to the north')
+        elif map1.map[y-1][x] == 'U':
+            look_directions.append('there is a ledge above to the north')
+        elif map1.map[y-1][x] == 'D':
+            look_directions.append('there is a ledge below to the north')
+        elif map1.map[y-1][x] == 'E':
+            look_directions.append('there is the exit to the north')
+        elif map1.map[y-1][x] == 'G':
+            look_directions.append('there is a grappling hook to the north')
         else:
             look_directions.append('there is a wall to the north')
 
@@ -445,6 +584,18 @@ class Player:
             look_directions.append('there is a map to the south')
         elif map1.map[y + 1][x] == 'L':
             look_directions.append('there is a ladder to the south')
+        elif map1.map[y + 1][x] == 'B':
+            look_directions.append('there is a pile of rubble to the south')
+        elif map1.map[y + 1][x] == 'A':
+            look_directions.append('there is a pickaxe to the south')
+        elif map1.map[y + 1][x] == 'U':
+            look_directions.append('there is a ledge above to the south')
+        elif map1.map[y + 1][x] == 'D':
+            look_directions.append('there is a ledge below to the south')
+        elif map1.map[y + 1][x] == 'E':
+            look_directions.append('there is the exit to the south')
+        elif map1.map[y + 1][x] == 'G':
+            look_directions.append('there is a grappling hook to the south')
         else:
             look_directions.append('there is a wall to the south')
 
@@ -456,6 +607,18 @@ class Player:
             look_directions.append('there is a map to the east')
         elif map1.map[y][x + 1] == 'L':
             look_directions.append('there is a ladder to the east')
+        elif map1.map[y][x + 1] == 'B':
+            look_directions.append('there is a pile of rubble to the east')
+        elif map1.map[y][x + 1] == 'A':
+            look_directions.append('there is a pickaxe to the east')
+        elif map1.map[y][x + 1] == 'U':
+            look_directions.append('there is a ledge above to the east')
+        elif map1.map[y][x + 1] == 'D':
+            look_directions.append('there is a ledge below to the east')
+        elif map1.map[y][x + 1] == 'E':
+            look_directions.append('there is the exit to the east')
+        elif map1.map[y][x + 1] == 'G':
+            look_directions.append('there is a grappling hook to the east')
         else:
             look_directions.append('there is a wall to the east')
 
@@ -467,69 +630,78 @@ class Player:
             look_directions.append('there is a map to the west')
         elif map1.map[y][x - 1] == 'L':
             look_directions.append('there is a ladder to the west')
+        elif map1.map[y][x - 1] == 'B':
+            look_directions.append('there is a pile of rubble to the west')
+        elif map1.map[y][x - 1] == 'A':
+            look_directions.append('there is a pickaxe to the west')
+        elif map1.map[y][x - 1] == 'U':
+            look_directions.append('there is a ledge above to the west')
+        elif map1.map[y][x - 1] == 'D':
+            look_directions.append('there is a ledge below to the west')
+        elif map1.map[y][x - 1] == 'E':
+            look_directions.append('there is the exit to the west')
+        elif map1.map[y][x - 1] == 'G':
+            look_directions.append('there is a grappling hook to the west')
         else:
             look_directions.append('there is a wall to the west')
 
         print_line("You look around and see that " + look_directions[0] + ", " + look_directions[1] + ", " + look_directions[2] + " and " + look_directions[3] + "." + "\n")
 
     def check_inventory(self):
-        if len(self.inventory) == 0:
-            print_line("You are not carrying anything.\n")
+        inventory_string = ""
+        if len(self.inventory) > 1:
+            if len(self.inventory) == 2:
+                inventory_string += self.inventory[0] + " and " + self.inventory[1]
+            elif len(self.inventory) > 2:
+                for item in self.inventory[:-1]:
+                    inventory_string += item + ", "
+                inventory_string += " and " + self.inventory[-1]
+        elif len(self.inventory) == 1:
+            inventory_string += self.inventory[0]
         else:
-            print_line("You are carrying:")
-            for item in self.inventory:
-                print_line(item)
+            inventory_string += "nothing"
+        print("You are carrying " + inventory_string + ".\n")
+            
+    
+    def add_to_inventory(self):
+        if map1.have_rope == True:
+            if "rope" not in self.inventory:
+                self.inventory.append("rope")
+        elif map1.have_grapple == True:
+            if "grappling hook" not in self.inventory:
+                self.inventory.append("grappling hook")
+        elif map1.have_map == True:
+            if "map" not in self.inventory:
+                self.inventory.append("map")
+        elif map1.have_pickaxe == True:
+            if "pickaxe" not in self.inventory:
+                self.inventory.append("pickaxe")
 
-    # def take(self, item):
-    #     if item == "lantern":
-    #         if self.location == "cavern":
-    #             if "lantern" in self.inventory:
-    #                 print_line("You already have a lantern.")
+    # This is perhaps now defunct functionality
+    # def use(self, item, target = None):
+
+    #     if item == "rope":
+    #         if self.have_rope == True:
+    #             if target == "ladder":
+    #                 print_line("You can't use the rope on the ladder.\n")
+    #             elif target == "ledge":
+    #                 print_line("You tie the rope to the ledge and climb down to the bottom.\n")
+    #                 # Need to add some functionality here to move the player to the bottom of the cave
+    #                 # Will likely need to add a second map layer, a variable that controls which layer is displayed and a function to switch between the two
     #             else:
-    #                 self.inventory.append("lantern")
-    #                 print_line("You take the lantern.")
+    #                 print_line("You can't use the rope on that.\n")
     #         else:
-    #             print_line("You can't take that.")
-    #     else:
-    #         print_line("You can't take that.")
-
-    # def drop(self, item):
-    #     if item == "lantern":
-    #         if self.location == "cavern":
-    #             if "lantern" in self.inventory:
-    #                 self.inventory.remove("lantern")
-    #                 print_line("You drop the lantern.")
-    #             else:
-    #                 print_line("You don't have a lantern.")
+    #             print_line("You don't have a rope.\n")
+    #     elif item == "map":
+    #         if self.have_map == True:
+    #             map1.print_map_with_player()
     #         else:
-    #             print_line("You can't drop that.")
+    #             print_line("You don't have a map.\n")
+
+    #     # if item == "map":
+
     #     else:
-    #         print_line("You can't drop that.")
-
-    def use(self, item, target = None):
-
-        if item == "rope":
-            if self.have_rope == True:
-                if target == "ladder":
-                    print_line("You can't use the rope on the ladder.\n")
-                elif target == "ledge":
-                    print_line("You tie the rope to the ledge and climb down to the bottom.\n")
-                    # Need to add some functionality here to move the player to the bottom of the cave
-                    # Will likely need to add a second map layer, a variable that controls which layer is displayed and a function to switch between the two
-                else:
-                    print_line("You can't use the rope on that.\n")
-            else:
-                print_line("You don't have a rope.\n")
-        elif item == "map":
-            if self.have_map == True:
-                map1.print_map_with_player()
-            else:
-                print_line("You don't have a map.\n")
-
-        # if item == "map":
-
-        else:
-            print_line("You don't have that item.\n")
+    #         print_line("You don't have that item.\n")
 
     def help(self):
         print_line("You will be able to move around the cave by typing the direction you want to go in. For example, 'north' or 'south'.\n")
@@ -577,9 +749,13 @@ sleep(0.5)
 while player.is_alive == True:
     print_line("What do you want to do?\n")
     action = input("Please enter a command: ")
-    if action == "north" or action == "south" or action == "east" or action == "west":
+    if action == "north" or action == "south" or action == "east" or action == "west" or action == "n" or action == "s" or action == "e" or action == "w":
         map1.move(action)
         map1.print_area_around_player()
+        player.add_to_inventory()
+        print(player.inventory)
+        print(map1.have_rope, map1.have_map, map1.have_grapple, map1.have_pickaxe)
+        print(player.have_rope, player.have_map, player.have_grapple, player.have_pickaxe)
     elif action == "look":
         player.look()
     elif action == "inventory":

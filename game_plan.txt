@@ -43,12 +43,15 @@ Player Actions:
     - west
 - look - look around at surroundings and give a description of the location
 - inventory
-- take
-- drop
 - use
 - help
 
 Map:
 - Want to be able to call map and for the player to see where they are currently, as well as where they have been before. If they have not been there then it should not be visible. The graphic should also show the user where they are currently.
 
-
+Ideas for items/actions that will be required
+- Rope to descend to lower ledge
+- Ladder to ascend to higher ledge
+- Grapple to ascend to higher ledge
+- Pickaxe to unblock blocked routes
+- 
