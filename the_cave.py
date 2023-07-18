@@ -80,7 +80,7 @@ class Map():
         
         self.up_1_map = [['C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','D',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
-                         ['C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
+                         ['C','E',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C',' ',' ',' ','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                          ['C','C','C','C','C','C','C',' ',' ',' ','E','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
@@ -116,16 +116,7 @@ class Map():
         self.have_map = False
         self.have_grapple = False
         self.have_rope = False
-        self.have_pickaxe = False
-
-        if self.current_level == 0:
-            self.map = self.start_map
-        elif self.current_level == 1:
-            self.map = self.up_1_map
-        elif self.current_level == -1:
-            self.map = self.down_1_map
-        else:
-            print("Something went wrong with the map levels")        
+        self.have_pickaxe = False     
 
     def __repr__(self):
         return "Map(height = {height}, width = {width}, player_x = {player_x}, player_y = {player_y})".format(height = self.height, width = self.width, player_x = self.player_x, player_y = self.player_y)
@@ -256,8 +247,7 @@ class Map():
             else:
                 print("Something went wrong")
         print("You can't go that way! It looks like you can go " + new_can_move + " though!")
-
-    
+   
     def move(self, direction):
         
         if direction.lower() == 'north' or direction.lower() == 'n':
@@ -300,6 +290,7 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb up the ledge.")
                     self.player_y -= 1
+                    self.current_level += 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb up there, it's too high! You'll need something to help you climb up.")
@@ -308,10 +299,12 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb down the ledge.")
                     self.player_y -= 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 elif self.have_rope == True:
                     print("You use your rope to climb down the ledge.")
                     self.player_y -= 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb down there, it's too high! You'll need something to help you climb down.")
@@ -359,6 +352,7 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb up the ledge.")
                     self.player_y += 1
+                    self.current_level += 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb up there, it's too high! You'll need something to help you climb up.")
@@ -367,10 +361,12 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb down the ledge.")
                     self.player_y += 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 elif self.have_rope == True:
                     print("You use your rope to climb down the ledge.")
                     self.player_y += 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb down there, it's too high! You'll need something to help you climb down.")
@@ -418,6 +414,7 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb up the ledge.")
                     self.player_x += 1
+                    self.current_level += 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb up there, it's too high! You'll need something to help you climb up.")
@@ -426,10 +423,12 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb down the ledge.")
                     self.player_x += 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 elif self.have_rope == True:
                     print("You use your rope to climb down the ledge.")
                     self.player_x += 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb down there, it's too high! You'll need something to help you climb down.")
@@ -477,6 +476,7 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb up the ledge.")
                     self.player_x -= 1
+                    self.current_level += 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb up there, it's too high! You'll need something to help you climb up.")
@@ -485,10 +485,12 @@ class Map():
                 if self.have_grapple == True:
                     print("You use your grappling hook to climb down the ledge.")
                     self.player_x -= 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 elif self.have_rope == True:
                     print("You use your rope to climb down the ledge.")
                     self.player_x -= 1
+                    self.current_level -= 1
                     self.reveal_map(self.player_x, self.player_y)
                 else:
                     print("You can't climb down there, it's too high! You'll need something to help you climb down.")
@@ -531,6 +533,18 @@ class Map():
                     map_string += char
             map_string += "\n"
         print(map_string)
+    
+    def change_level(self):
+        if self.current_level == 0:
+            self.map = self.start_map
+        elif self.current_level == 1:
+            self.map = self.up_1_map
+        elif self.current_level == -1:
+            self.map = self.down_1_map
+        else:
+            print("Something went wrong with the map levels")
+
+
 
 map1 = Map()
 
@@ -676,31 +690,64 @@ class Player:
             if "pickaxe" not in self.inventory:
                 self.inventory.append("pickaxe")
 
-    # This is perhaps now defunct functionality
-    # def use(self, item, target = None):
+    def use(self, item, target = None):
 
-    #     if item == "rope":
-    #         if self.have_rope == True:
-    #             if target == "ladder":
-    #                 print_line("You can't use the rope on the ladder.\n")
-    #             elif target == "ledge":
-    #                 print_line("You tie the rope to the ledge and climb down to the bottom.\n")
-    #                 # Need to add some functionality here to move the player to the bottom of the cave
-    #                 # Will likely need to add a second map layer, a variable that controls which layer is displayed and a function to switch between the two
-    #             else:
-    #                 print_line("You can't use the rope on that.\n")
-    #         else:
-    #             print_line("You don't have a rope.\n")
-    #     elif item == "map":
-    #         if self.have_map == True:
-    #             map1.print_map_with_player()
-    #         else:
-    #             print_line("You don't have a map.\n")
+        if item == "map":
+            if self.have_map == True:
+                map1.print_map_with_player()
+            else:
+                print_line("You don't have a map.\n")
+        elif item == "pickaxe" or item == "A":
+            if map1.have_pickaxe == True:
+                if target == "rubble" or target == "B":
 
-    #     # if item == "map":
+                    if map1.map[map1.player_y][map1.player_x + 1] == 'B':
+                        print_line("You use the pickaxe to clear the rubble. You can now go east.\n")
+                        map1.map[map1.player_y][map1.player_x + 1] = ' '
+                        if map1.current_level == 0:
+                            map1.start_map[map1.player_y][map1.player_x + 1] = ' '
+                        elif map1.current_level == 1:
+                            map1.up_1_map[map1.player_y][map1.player_x + 1] = ' '
+                        elif map1.current_level == -1:
+                            map1.down_1_map[map1.player_y][map1.player_x + 1] = ' '
 
-    #     else:
-    #         print_line("You don't have that item.\n")
+                    elif map1.map[map1.player_y][map1.player_x - 1] == 'B':
+                        print_line("You use the pickaxe to clear the rubble. You can now go west.\n")
+                        map1.map[map1.player_y][map1.player_x - 1] = ' '
+                        if map1.current_level == 0:
+                            map1.start_map[map1.player_y][map1.player_x - 1] = ' '
+                        elif map1.current_level == 1:
+                            map1.up_1_map[map1.player_y][map1.player_x - 1] = ' '
+                        elif map1.current_level == -1:
+                            map1.down_1_map[map1.player_y][map1.player_x - 1] = ' '
+
+                    elif map1.map[map1.player_y + 1][map1.player_x] == 'B':
+                        print_line("You use the pickaxe to clear the rubble. You can now go south.\n")
+                        map1.map[map1.player_y + 1][map1.player_x] = ' '
+                        if map1.current_level == 0:
+                            map1.start_map[map1.player_y + 1][map1.player_x] = ' '
+                        elif map1.current_level == 1:
+                            map1.up_1_map[map1.player_y + 1][map1.player_x] = ' '
+                        elif map1.current_level == -1:
+                            map1.down_1_map[map1.player_y + 1][map1.player_x] = ' '
+
+                    elif map1.map[map1.player_y - 1][map1.player_x] == 'B':
+                        print_line("You use the pickaxe to clear the rubble. You can now go north.\n")
+                        map1.map[map1.player_y - 1][map1.player_x] = ' '
+                        if map1.current_level == 0:
+                            map1.start_map[map1.player_y - 1][map1.player_x] = ' '
+                        elif map1.current_level == 1:
+                            map1.up_1_map[map1.player_y - 1][map1.player_x] = ' '
+                        elif map1.current_level == -1:
+                            map1.down_1_map[map1.player_y - 1][map1.player_x] = ' '
+
+                else:
+                    print_line("You can't use the pickaxe on that.\n")
+            else:
+                print_line("You don't have a pickaxe.\n")
+
+        else:
+            print_line("You don't have that item.\n")
 
     def help(self):
         print_line("You will be able to move around the cave by typing the direction you want to go in. For example, 'north' or 'south'.\n")
@@ -748,19 +795,19 @@ sleep(0.5)
 while player.is_alive == True:
     print_line("What do you want to do?\n")
     action = input("Please enter a command: ")
+    os.system('cls')
     if action.lower() == "north" or action.lower() == "south" or action.lower() == "east" or action.lower() == "west" or action.lower() == "n" or action.lower() == "s" or action.lower() == "e" or action.lower() == "w":
         map1.move(action)
+        map1.change_level()
         map1.print_area_around_player()
         player.add_to_inventory()
-        print(player.inventory)
-        print(map1.have_rope, map1.have_map, map1.have_grapple, map1.have_pickaxe)
     elif action.lower() == "look" or action.lower() == "l":
         player.look()
     elif action.lower() == "inventory" or action.lower() == "i":
         player.check_inventory()
     elif action.lower() == "use" or action.lower() == "u":
         item, *target = input("Please enter an item and target (if required): ").split()
-        if item == "map":
+        if item.lower() == "map":
             player.use(item)
         else:
             if len(target) == 0 and item in player.inventory: # Check whether this is the correct syntax
