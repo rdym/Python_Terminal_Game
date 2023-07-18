@@ -651,29 +651,28 @@ class Player:
         inventory_string = ""
         if len(self.inventory) > 1:
             if len(self.inventory) == 2:
-                inventory_string += self.inventory[0] + " and " + self.inventory[1]
+                inventory_string += "a " + self.inventory[0] + " and a " + self.inventory[1]
             elif len(self.inventory) > 2:
                 for item in self.inventory[:-1]:
-                    inventory_string += item + ", "
-                inventory_string += " and " + self.inventory[-1]
+                    inventory_string += "a " + item + ", "
+                inventory_string += "and a " + self.inventory[-1]
         elif len(self.inventory) == 1:
-            inventory_string += self.inventory[0]
+            inventory_string += "a " + self.inventory[0]
         else:
             inventory_string += "nothing"
         print("You are carrying " + inventory_string + ".\n")
-            
-    
+               
     def add_to_inventory(self):
         if map1.have_rope == True:
             if "rope" not in self.inventory:
                 self.inventory.append("rope")
-        elif map1.have_grapple == True:
+        if map1.have_grapple == True:
             if "grappling hook" not in self.inventory:
                 self.inventory.append("grappling hook")
-        elif map1.have_map == True:
+        if map1.have_map == True:
             if "map" not in self.inventory:
                 self.inventory.append("map")
-        elif map1.have_pickaxe == True:
+        if map1.have_pickaxe == True:
             if "pickaxe" not in self.inventory:
                 self.inventory.append("pickaxe")
 
@@ -749,18 +748,17 @@ sleep(0.5)
 while player.is_alive == True:
     print_line("What do you want to do?\n")
     action = input("Please enter a command: ")
-    if action == "north" or action == "south" or action == "east" or action == "west" or action == "n" or action == "s" or action == "e" or action == "w":
+    if action.lower() == "north" or action.lower() == "south" or action.lower() == "east" or action.lower() == "west" or action.lower() == "n" or action.lower() == "s" or action.lower() == "e" or action.lower() == "w":
         map1.move(action)
         map1.print_area_around_player()
         player.add_to_inventory()
         print(player.inventory)
         print(map1.have_rope, map1.have_map, map1.have_grapple, map1.have_pickaxe)
-        print(player.have_rope, player.have_map, player.have_grapple, player.have_pickaxe)
-    elif action == "look":
+    elif action.lower() == "look" or action.lower() == "l":
         player.look()
-    elif action == "inventory":
+    elif action.lower() == "inventory" or action.lower() == "i":
         player.check_inventory()
-    elif action == "use":
+    elif action.lower() == "use" or action.lower() == "u":
         item, *target = input("Please enter an item and target (if required): ").split()
         if item == "map":
             player.use(item)
@@ -769,11 +767,10 @@ while player.is_alive == True:
                 print_line("You need to specify a target for that item.\n")
             else:
                 player.use(item, target[0])
-    elif action == "help":
+    elif action.lower() == "help" or action.lower() == "h":
         player.help()
-    elif action == "quit":
+    elif action.lower() == "quit" or action.lower() == "q":
+        input("Are you sure you want to quit? (Press enter to confirm)")
         player.quit()
-    elif action == "print1":
-        print("This is working")
     else:
         print_line("I don't understand that command. Please try again.\n")
