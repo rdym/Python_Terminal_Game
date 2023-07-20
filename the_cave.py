@@ -25,7 +25,7 @@ class Map():
                           ['C','C',' ',' ',' ','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C',' ',' ',' ','D','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C',' ',' ',' ','C','C','C','C','C','C','C','C','C','C','D','C','C','C','C','C','C','C','C','C'],
-                          ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','G',' ','C','C','C','C','C','C','C','C','C'],
+                          ['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
                           ['C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ',' ',' ',' ','C','C','C','C','C','C','C'],
@@ -51,7 +51,7 @@ class Map():
         self.down_1_map = [['C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C','C',' ',' ',' ',' ','C','C','C','C','C','C'],
                             ['C','C','C','C','C','C','C',' ',' ',' ',' ',' ','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ','C','C','C','C','C'],
                             ['C','C','C','C','C',' ',' ',' ','C','C','C',' ','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ','C','C','C','C'],
-                            ['C','C','C','C',' ',' ','C','C','C','C','C',' ','C','C','C','C','C','C','C','C','A',' ',' ',' ',' ',' ',' ','C','C','C'],
+                            ['C','C','C','C',' ',' ','C','C','C','C','C',' ','C','C','C','C','C','C','C','C',' ',' ',' ',' ',' ',' ',' ','C','C','C'],
                             ['C','C',' ',' ',' ','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
                             ['C','C',' ','C','C','C','C','C','C','C','U',' ',' ','C','C','C','C','C','C','C',' ','C','C','C',' ',' ',' ','C','C','C'],
                             ['C','C','A','C','C','C','C','C','C','C',' ',' ','C','C','C','C','C','C','C','C','U','C','C','C','C',' ',' ','C','C','C'],
@@ -167,7 +167,7 @@ class Map():
         elif self.map[y-1][x] == 'R':
             can_move_directions.append('north to pickup a rope')
         elif self.map[y-1][x] == 'M':
-            can_move_directions.append('north to pickup a map')
+            can_move_directions.append('north to pickup some paper to use as a map')
         elif self.map[y-1][x] == 'E':
             can_move_directions.append('north to go to the exit')
         elif self.map[y-1][x] == 'G':
@@ -186,7 +186,7 @@ class Map():
         elif self.map[y + 1][x] == 'R':
             can_move_directions.append('south to pickup a rope')
         elif self.map[y + 1][x] == 'M':
-            can_move_directions.append('south to pickup a map')
+            can_move_directions.append('south to pickup some paper to use as a map')
         elif self.map[y + 1][x] == 'E':
             can_move_directions.append('south to go to the exit')
         elif self.map[y + 1][x] == 'G':
@@ -205,7 +205,7 @@ class Map():
         elif self.map[y][x + 1] == 'R':
             can_move_directions.append('east to pickup a rope')
         elif self.map[y][x + 1] == 'M':
-            can_move_directions.append('east to pickup a map')
+            can_move_directions.append('east to pickup some paper to use as a map')
         elif self.map[y][x + 1] == 'E':
             can_move_directions.append('east to go to the exit')
         elif self.map[y][x + 1] == 'G':
@@ -224,7 +224,7 @@ class Map():
         elif self.map[y][x - 1] == 'R':
             can_move_directions.append('west to pickup a rope')
         elif self.map[y][x - 1] == 'M':
-            can_move_directions.append('west to pickup a map')
+            can_move_directions.append('west to pickup some paper to use as a map')
         elif self.map[y][x - 1] == 'E':
             can_move_directions.append('west to go to the exit')
         elif self.map[y][x - 1] == 'G':
@@ -262,7 +262,7 @@ class Map():
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
             elif new_cell == 'M':
-                print("You found a map!")
+                print("You found some paper to use as a map!")
                 self.have_map = True
                 self.player_y -= 1
                 self.map[self.player_y][self.player_x] = ' '
@@ -324,7 +324,7 @@ class Map():
                 self.reveal_map(self.player_x, self.player_y)
                 self.have_rope = True
             elif new_cell == 'M':
-                print("You found a map!")
+                print("You found some paper to use as a map!")
                 self.player_y += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
@@ -386,7 +386,7 @@ class Map():
                 self.reveal_map(self.player_x, self.player_y)
                 self.have_rope = True
             elif new_cell == 'M':
-                print("You found a map!")
+                print("You found some paper to use as a map!")
                 self.player_x += 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
@@ -448,7 +448,7 @@ class Map():
                 self.reveal_map(self.player_x, self.player_y)
                 self.have_rope = True
             elif new_cell == 'M':
-                print("You found a map!")
+                print("You found some paper to use as a map!")
                 self.player_x -= 1
                 self.map[self.player_y][self.player_x] = ' '
                 self.reveal_map(self.player_x, self.player_y)
@@ -518,7 +518,7 @@ class Map():
                 map_string += "\n"
             print(map_string)
         else:
-            print("You haven't found a map yet. You can't see where you are on the map.")
+            print("You haven't found anything to use as a map yet. You can't see where you are on the map.")
             
     def print_area_around_player(self):
         map_string = ""
@@ -570,7 +570,7 @@ class Player:
         elif map1.map[y-1][x] == 'R':
             look_directions.append('there is a rope to the north')
         elif map1.map[y-1][x] == 'M':
-            look_directions.append('there is a map to the north')
+            look_directions.append('there is some paper to use as a map to the north')
         elif map1.map[y-1][x] == 'L':
             look_directions.append('there is a ladder to the north')
         elif map1.map[y-1][x] == 'B':
@@ -593,7 +593,7 @@ class Player:
         elif map1.map[y + 1][x] == 'R':
             look_directions.append('there is a rope to the south')
         elif map1.map[y + 1][x] == 'M':
-            look_directions.append('there is a map to the south')
+            look_directions.append('there is some paper to use as a map to the south')
         elif map1.map[y + 1][x] == 'L':
             look_directions.append('there is a ladder to the south')
         elif map1.map[y + 1][x] == 'B':
@@ -616,7 +616,7 @@ class Player:
         elif map1.map[y][x + 1] == 'R':
             look_directions.append('there is a rope to the east')
         elif map1.map[y][x + 1] == 'M':
-            look_directions.append('there is a map to the east')
+            look_directions.append('there is some paper to use as a map to the east')
         elif map1.map[y][x + 1] == 'L':
             look_directions.append('there is a ladder to the east')
         elif map1.map[y][x + 1] == 'B':
@@ -639,7 +639,7 @@ class Player:
         elif map1.map[y][x - 1] == 'R':
             look_directions.append('there is a rope to the west')
         elif map1.map[y][x - 1] == 'M':
-            look_directions.append('there is a map to the west')
+            look_directions.append('there is some paper to use as a map to the west')
         elif map1.map[y][x - 1] == 'L':
             look_directions.append('there is a ladder to the west')
         elif map1.map[y][x - 1] == 'B':
